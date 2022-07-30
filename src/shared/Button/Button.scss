@@ -1,0 +1,37 @@
+@import "src/style/utils/variables";
+
+.Button {
+  $root: &;
+
+  font-size: 24px;
+  color: $white-color;
+  font-weight: 600;
+  padding: 8px 32px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &_primary {
+    background: $primary-color;
+    color: $white-color;
+    &:hover, &:focus {
+      background: #DE5342;
+      color: $white-color;
+    }
+
+    &#{$root}_outline {
+      color: $primary-color;
+      background: transparent;
+      padding: 6px 32px;
+      margin-right: 25px;
+
+      border: 3px solid $primary-color;
+      &:hover, &:focus {
+        background: unset;
+        border-color: #DE5342;
+        color: #DE5342;
+      }
+    }
+  }
+
+
+}

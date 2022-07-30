@@ -1,0 +1,49 @@
+//import variables
+@import '../../../style/utils/variables';
+    
+.Header {
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: $purple-color;
+  color: $white-color;
+
+  &__content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+  }
+  &__logo-container {
+    margin: 3px 0 0 15px;
+  }
+
+  &__routes-container {
+    :first-child {
+      margin-right: 10px;
+    }
+
+  }
+
+  &__auth-routes-container {
+    :first-child {
+      margin-right: 50px;
+    }
+    font-size: 20px
+  }
+
+  &__link {
+    color: $white-color;
+  }
+
+  &__link, &__auth-button {
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+  a {
+    color: $white-color;
+  }
+}

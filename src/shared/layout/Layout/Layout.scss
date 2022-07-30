@@ -1,0 +1,8 @@
+.Layout {
+ &__headerBlock {
+   //if width is less than 700px, then display = none
+    @media (max-width: 700px) {
+      display: none;
+    }
+ }
+ }

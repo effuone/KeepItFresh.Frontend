@@ -1,6 +1,6 @@
 import React from "react";
 import useBem from "../../../hooks/useBem";
-import { Link, NavLink } from "react-router-dom";
+import { generatePath, Link, NavLink } from "react-router-dom";
 import {
   ROUTE_ROOT,
   ROUTE_NOT_FOUND,
@@ -34,7 +34,7 @@ export default function Header() {
           </div>
         )}
         <div className={bemElement("logo-container")}>
-          <Link to={ROUTE_ROOT}>
+          <Link to={generatePath(ROUTE_ROOT, {page: '1'})}>
             <img src="/logos/keepitfresh.png" alt="one-family-logo" />
           </Link>
         </div>

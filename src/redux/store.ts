@@ -1,5 +1,14 @@
 import {configureStore} from '@reduxjs/toolkit';
-import rootReducer from './auth/reducer';
+import { combineReducers } from "@reduxjs/toolkit";
+import auth from "./auth/auth";
+import message from "./auth/message";
+import { productsApi } from "./services/products.api";
+
+const rootReducer = combineReducers({
+    auth,
+    message,
+    [productsApi.reducerPath]: productsApi.reducer
+});
 
 export const setupStore = () => configureStore({
     reducer: rootReducer,

@@ -4,7 +4,7 @@ import useBem from "../../hooks/useBem";
 import "./Product.scss";
 
 interface IProductProps {
-  label: string;
+  name: string;
   image: string;
   price: number;
   onClick?: () => void;
@@ -22,9 +22,9 @@ function Product(props: IProductProps) {
       )}
       onClick={props.onClick}
     >
-      <img src={props.image} alt={props.label} />
+      <img src={props.image} alt={props.name} />
       <div className={bemElement("text-info")}>
-        <h3>{props.label}</h3>
+        <h3>{props.name}</h3>
         <p>{props.price} tg</p>
       </div>
     </div>

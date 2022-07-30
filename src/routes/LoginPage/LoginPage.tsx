@@ -14,7 +14,7 @@ import "./LoginPage.scss";
 import ContentContainer from "../../shared/layout/ContentContainer";
 import SectionContainer from "../../shared/layout/SectionContainer";
 import { useState } from "react";
-import { login } from "../../store/auth/actions";
+import { login } from "../../redux/auth/actions";
 import { useDispatch } from "../../hooks/useDispatch";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ROOT } from "../index";
@@ -32,48 +32,48 @@ const useStyles = makeStyles((theme) => ({
 
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   size: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   paper: {
     margin: theme.spacing(2, 6),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(0),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   function formSubmit(e: any) {
     e.preventDefault();
-    dispatch(login(email, password))
+    dispatch(login(username, password))
       .then(() => {
-        navigate(ROUTE_ROOT);
+        navigate("/products/1");
       })
-      .catch((e:any) => {
+      .catch((e: any) => {
         console.log(e);
-      })
+      });
   }
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const classes = useStyles();
 
@@ -97,18 +97,18 @@ export default function LoginPage() {
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
-              <form className={classes.form} onSubmit={formSubmit} >
+              <form className={classes.form} onSubmit={formSubmit}>
                 <TextField
                   variant="outlined"
                   margin="normal"
                   required
                   fullWidth
-                  id="email"
-                  label="email"
-                  name="email"
-                  value={email}
+                  id="username"
+                  label="username"
+                  name="username"
+                  value={username}
                   autoFocus
-                  onChange={(e: any) => setEmail(e.target.value)}
+                  onChange={(e: any) => setUsername(e.target.value)}
                 />
                 <TextField
                   variant="outlined"
@@ -142,8 +142,7 @@ export default function LoginPage() {
                     </Link>
                   </Grid>
                 </Grid>
-                <Box mt={5}>
-                </Box>
+                <Box mt={5}></Box>
               </form>
             </div>
           </Grid>

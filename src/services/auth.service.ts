@@ -1,9 +1,9 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/";
+import { APP_BACKEND_URL } from "../constants/constants";
 class AuthService {
-  login(email: string, password: string) {
+  login(username: string, password: string) {
     return axios
-      .post(API_URL + "login", { email, password })
+      .post(APP_BACKEND_URL + "api/login", { username, password })
       .then((response) => {
         console.log(response.data);
         if (response.data.token) {
@@ -15,13 +15,29 @@ class AuthService {
   logout() {
     localStorage.removeItem("user");
   }
-  register(name:string, surname:string, age: number, email: string, password: string) {
-    return axios.post(API_URL + "register", {
-      name,
-      surname,
-      age,
-      email,
+  register(
+    username: string,
+    password: string,
+    firstName: string,
+    birthday: string,
+    image: string,
+    skinTypeId: number,
+    locationId: number,
+    email: string,
+    phoneNumber: string,
+    isCosmeticBagAvailable: boolean
+  ) {
+    return axios.post(APP_BACKEND_URL + "api/register", {
+      username,
       password,
+      firstName,
+      birthday,
+      image,
+      skinTypeId,
+      locationId,
+      email,
+      phoneNumber,
+      isCosmeticBagAvailable,
     });
   }
 }

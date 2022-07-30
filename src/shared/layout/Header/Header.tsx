@@ -1,12 +1,11 @@
 import React from "react";
 import useBem from "../../../hooks/useBem";
 import { Link, NavLink } from "react-router-dom";
-import Button from "../../Button";
 import {
   ROUTE_ROOT,
   ROUTE_NOT_FOUND,
   ROUTE_SUBSCRIPTION,
-  ROUTE_LOGIN,
+  ROUTE_LOGIN, ROUTE_REGSITER
 } from "../../../routes";
 import { useSelector } from "../../../hooks/useSelector";
 import ContentContainer from "../ContentContainer";
@@ -16,7 +15,7 @@ import "./Header.scss";
 export default function Header() {
   const { bemBlock, bemElement } = useBem("Header");
 
-  const isAuthorizedUser = useSelector((state) => state.auth.isAuth);
+  const isAuthorizedUser = useSelector((state) => state.auth.isLoggedIn);
 
   return (
     <header className={bemBlock()}>
@@ -27,10 +26,10 @@ export default function Header() {
         ) : (
           <div className={bemElement("auth-routes-container")}>
             <Link to={ROUTE_LOGIN}>
-              Login
+              Войти
             </Link>
-            <Link to={ROUTE_NOT_FOUND}>
-              Logout
+            <Link to={ROUTE_REGSITER}>
+              Регистрация
             </Link>
           </div>
         )}

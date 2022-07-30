@@ -5,7 +5,6 @@ import { productsJSON} from "../products";
 import "./IndexPage.scss";
 import ContentContainer from "../../shared/layout/ContentContainer";
 import SectionContainer from "../../shared/layout/SectionContainer";
-import Button from "../../shared/Button";
 import { useEffect, useState } from "react";
 import Product from "../../shared/Product";
 export default function IndexPage() {
@@ -17,13 +16,13 @@ export default function IndexPage() {
     setSearch(text);
   };
   useEffect(() => {
-      console.log(productsJSON);
   }, []);
   const handleSort = () => {
     sort === "Сортировка по рейтингу" ? setSort("Сортировка по цене") : setSort("Сортировка по рейтингу");
   };
   const { bemBlock, bemElement } = useBem("IndexPage");
 
+  // @ts-ignore
   return (
     <SectionContainer className={bemBlock()}>
       <ContentContainer className={bemElement("content-container")}>
@@ -47,9 +46,10 @@ export default function IndexPage() {
         </div>
         <div>
           <div className={bemElement("products-container")}>
-            {productsJSON.map((product: any) => {
+            {productsJSON.map((product: any, index: any) => {
+
               return (
-                <Product label={product.name} image={product.image} price={product.price}></Product>
+                <Product key={index} label={product.name} image={product.image} price={product.price}></Product>
               );
             })}
           </div>

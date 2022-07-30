@@ -10,14 +10,14 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import "./LoginPage.scss";
+import "./RegisterPage.scss";
 import ContentContainer from "../../shared/layout/ContentContainer";
 import SectionContainer from "../../shared/layout/SectionContainer";
 import { useState } from "react";
-import { login } from "../../store/auth/actions";
 import { useDispatch } from "../../hooks/useDispatch";
-import { useNavigate } from "react-router-dom";
-import { ROUTE_ROOT } from "../index";
+import { register } from "../../store/auth/actions";
+import { ROUTE_LOGIN } from "../index";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -59,25 +59,30 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
-export default function LoginPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  function formSubmit(e: any) {
-    e.preventDefault();
-    dispatch(login(email, password))
-      .then(() => {
-        navigate(ROUTE_ROOT);
-      })
-      .catch((e:any) => {
-        console.log(e);
-      })
-  }
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
 
+export default function RegisterPage() {
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [age, setAge] = useState(0);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const classes = useStyles();
 
   const { bemBlock, bemElement } = useBem("LoginPage");
+  const dispatch = useDispatch();
+
+  function formSubmit(e: any) {
+    e.preventDefault();
+    dispatch(register(name, surname, email, age, password))
+      .then(() => {
+        console.log("Amanbek the best");
+        window.location.href = "/login";
+      })
+      .catch((e: any) => {
+        console.log(e);
+      });
+  }
 
   return (
     <SectionContainer className={bemBlock()}>
@@ -95,19 +100,55 @@ export default function LoginPage() {
           >
             <div className={classes.paper}>
               <Typography component="h1" variant="h5">
-                Sign in
+                Создайте аккаунт
               </Typography>
-              <form className={classes.form} onSubmit={formSubmit} >
+              <form className={classes.form} noValidate onSubmit={(e) => formSubmit(e)}>
                 <TextField
                   variant="outlined"
                   margin="normal"
                   required
                   fullWidth
-                  id="email"
-                  label="email"
-                  name="email"
-                  value={email}
+                  id="name"
+                  label="Имя"
+                  name="name"
+                  value={name}
                   autoFocus
+                  onChange={(e: any) => setName(e.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="surname"
+                  label="Фамилия"
+                  name="surname"
+                  value={surname}
+                  autoFocus
+                  onChange={(e: any) => setSurname(e.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="age"
+                  label="Возраст"
+                  name="age"
+                  value={age}
+                  autoFocus
+                  onChange={(e: any) => setAge(e.target.value)}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="email"
+                  label="Почта"
+                  type="email"
+                  id="email"
+                  value={email}
                   onChange={(e: any) => setEmail(e.target.value)}
                 />
                 <TextField
@@ -116,7 +157,7 @@ export default function LoginPage() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Пароль"
                   type="password"
                   id="password"
                   autoComplete="current-password"
@@ -124,7 +165,7 @@ export default function LoginPage() {
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
+                  label="Запомнить меня"
                 />
                 <Button
                   type="submit"
@@ -133,12 +174,12 @@ export default function LoginPage() {
                   color="primary"
                   className={classes.submit}
                 >
-                  Sign In
+                  Создать аккаунт
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                    <Link href={ROUTE_LOGIN} variant="body2">
+                      Уже есть аккаунт? Войдите
                     </Link>
                   </Grid>
                 </Grid>

@@ -68,7 +68,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("//httpsyopp.png");
   const [skinTypeId, setSkinTypeId] = useState(0);
   const [locationId, setLocationId] = useState(0);
   const [email, setEmail] = useState("");
@@ -165,17 +165,6 @@ export default function RegisterPage() {
                   onChange={(e: any) => setBirthday(e.target.value)}
                   defaultValue={"2017-05-24"}
                 />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="image"
-                  label="image"
-                  name="image"
-                  value={image}
-                  onChange={(e: any) => setImage(e.target.value)}
-                />
                 <InputLabel id="demo-simple-select-label">Тип кожи</InputLabel>
                 <Select
                   variant="outlined"
@@ -187,7 +176,11 @@ export default function RegisterPage() {
                   value={skinTypeId}
                   onChange={(e: any) => setSkinTypeId(e.target.value)}
                 >
-                  <MenuItem value={2}>Жирная кожа</MenuItem>
+                  <MenuItem value={2}>Жирная</MenuItem>
+                  <MenuItem value={4}>Комбинированная</MenuItem>
+                  <MenuItem value={5}>Обычная</MenuItem>
+                  <MenuItem value={7}>Сухая</MenuItem>
+                  <MenuItem value={8}>Чувствительная</MenuItem>
                 </Select>
                 <InputLabel id="demo-simple-select-label1">Локация</InputLabel>
                 <Select

@@ -3,16 +3,17 @@ export interface IProductsInterface {
   image: string;
   name: string;
   price: number;
+  rating: number;
 }
 
 export interface IProductsResponse {
   next: {
-    page: number,
-    limit: number,
-  },
+    page: number;
+    limit: number;
+  };
   previous: {
-    page: number,
-    limit: number,
-  },
-  results: IProductsInterface[]
+    page: number;
+    limit: number;
+  };
+  results: IProductsInterface[];
 }

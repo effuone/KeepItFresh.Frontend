@@ -8,6 +8,8 @@ import {
   ROUTE_LOGIN,
   ROUTE_REGSITER,
   ROUTE_PROFILE,
+  ROUTE_SENTIMENT,
+  ROUTE_PRODUCTS,
 } from "../../../routes";
 import { useSelector } from "../../../hooks/useSelector";
 import ContentContainer from "../ContentContainer";
@@ -32,14 +34,22 @@ export default function Header() {
             <NavLink to={ROUTE_PROFILE} style={{ marginRight: "20px" }}>
               Profile
             </NavLink>
-            <NavLink to={ROUTE_LOGIN} onClick={() => Logout()}>
+            <NavLink
+              to={ROUTE_LOGIN}
+              onClick={() => Logout()}
+              style={{ marginRight: "20px" }}
+            >
               Logout
             </NavLink>
+            <NavLink to={ROUTE_SENTIMENT}>Sentiment</NavLink>
           </div>
         ) : (
           <div className={bemElement("auth-routes-container")}>
             <Link to={ROUTE_LOGIN}>Войти</Link>
-            <Link to={ROUTE_REGSITER}>Регистрация</Link>
+            <Link to={ROUTE_REGSITER} style={{ marginRight: "20px" }}>
+              Регистрация
+            </Link>
+            <NavLink to={ROUTE_SENTIMENT}>Sentiment</NavLink>
           </div>
         )}
         <div className={bemElement("logo-container")}>
@@ -54,7 +64,10 @@ export default function Header() {
               Каталог
             </div>
           </NavLink>
-          <NavLink className={bemElement("link")} to={ROUTE_SUBSCRIPTION}>
+          <NavLink
+            className={bemElement("link")}
+            to={generatePath(ROUTE_PRODUCTS, { page: "1" })}
+          >
             <div className={bemElement("section-button")}>
               <img src="/logos/cosmetics_grey.svg" alt="cosmetics_grey.svg" />
               Косметичка

@@ -1,5 +1,2 @@
-react v18 🚀
-redux-toolkit 🛒
-typescript 
-webpack v5 🌯
-starter
+TO RUN PROJECT🚀: npm run watch
+LIVE DEMO:

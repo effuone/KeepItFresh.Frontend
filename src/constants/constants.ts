@@ -1,1 +1,1 @@
-export const APP_BACKEND_URL = process.env.APP_BACKEND_URL as string;
+export const APP_BACKEND_URL = "https://keep-it-fresh.herokuapp.com/";

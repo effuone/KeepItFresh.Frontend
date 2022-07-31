@@ -4,6 +4,7 @@ import LoginPage from "./LoginPage";
 import NotFoundPage from "./NotFoundPage";
 import RegisterPage from "./RegisterPage";
 import ProfilePage from "./ProfilePage";
+import SentimentPage from "./SentimentPage";
 
 export interface IRouteProps {
   path: string;
@@ -17,6 +18,7 @@ export const ROUTE_SUBSCRIPTION = "/subscription";
 export const ROUTE_LOGIN = "/login";
 export const ROUTE_REGSITER = "/register";
 export const ROUTE_PROFILE = "/profile";
+export const ROUTE_SENTIMENT = "/sentiment";
 
 export const publicRoutes: IRouteProps[] = [
   {
@@ -46,5 +48,9 @@ export const publicRoutes: IRouteProps[] = [
   {
     path: ROUTE_PROFILE,
     element: <ProfilePage />,
+  },
+  {
+    path: ROUTE_SENTIMENT,
+    element: <SentimentPage />,
   },
 ];

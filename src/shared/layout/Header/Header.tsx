@@ -19,11 +19,23 @@ export default function Header() {
 
   const isAuthorizedUser = useSelector((state) => state.auth.isLoggedIn);
 
+  function Logout() {
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
+
   return (
     <header className={bemBlock()}>
       <ContentContainer className={bemElement("content-container")}>
         {isAuthorizedUser ? (
-          <NavLink to={ROUTE_PROFILE}>Profile</NavLink>
+          <div>
+            <NavLink to={ROUTE_PROFILE} style={{ marginRight: "20px" }}>
+              Profile
+            </NavLink>
+            <NavLink to={ROUTE_LOGIN} onClick={() => Logout()}>
+              Logout
+            </NavLink>
+          </div>
         ) : (
           <div className={bemElement("auth-routes-container")}>
             <Link to={ROUTE_LOGIN}>Войти</Link>

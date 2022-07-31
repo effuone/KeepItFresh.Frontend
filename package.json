@@ -38,9 +38,11 @@
     "@babel/preset-env": "^7.16.11",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@iamtraction/google-translate": "^1.1.2",
     "@mui/material": "^5.9.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@types/react-redux": "^7.1.24",
+    "@vitalets/google-translate-api": "^8.0.0",
     "axios": "^0.27.2",
     "dotenv-webpack": "^7.1.0",
     "install": "^0.13.0",
@@ -48,10 +50,13 @@
     "material-ui-search-bar": "^1.0.0",
     "npm": "^8.7.0",
     "prettier": "^2.7.1",
+    "querystring-es3": "^0.2.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-material-ui-form-validator": "^3.0.1",
     "react-redux": "^8.0.1",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "sentiment": "^5.0.2",
+    "stream": "^0.0.2"
   }
 }

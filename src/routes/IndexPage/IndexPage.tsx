@@ -17,6 +17,12 @@ export default function IndexPage() {
   let { page } = useParams();
   const navigate = useNavigate();
 
+  const user = useSelector((state) => state.auth.user);
+  const userId = () => {
+    const parsedUser: any = jwt_decode(user.token);
+    return parsedUser?.id;
+  };
+
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("Сортировка по рейтингу");
 
@@ -24,7 +30,7 @@ export default function IndexPage() {
     currentData: productsData,
     isLoading: productsIsLoading,
     error,
-  } = useGetProductsQuery({ page });
+  } = useGetProductsQuery({ userId: userId(), page });
 
   // use useSelector to get the currentData from the store
   const handleChange = (text: string) => {

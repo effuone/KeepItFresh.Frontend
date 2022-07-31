@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import "./IndexPage.scss";
 import ContentContainer from "../../shared/layout/ContentContainer";
 import SectionContainer from "../../shared/layout/SectionContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "../../shared/Product";
 import NotFoundPage from "../NotFoundPage";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,17 +15,30 @@ export default function ProductsPage() {
   let { page } = useParams();
   const navigate = useNavigate();
 
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("Сортировка по рейтингу");
-
   const {
     currentData: productsData,
     isLoading: productsIsLoading,
     error,
   } = useGetAllProductsQuery({ page });
+
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("Сортировка по рейтингу");
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    if (!productsIsLoading) {
+      setProducts(productsData?.results);
+    }
+  }, [productsIsLoading]);
+
   console.log(productsData);
   // use useSelector to get the currentData from the store
   const handleChange = (text: string) => {
+    console.log(text, "text");
+    const filteredProducts = productsData?.results?.filter((product) =>
+      product.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setProducts(filteredProducts);
     setSearch(text);
   };
   const handleSort = () => {
@@ -88,7 +101,7 @@ export default function ProductsPage() {
         </div>
         <div>
           <div className={bemElement("products-container")}>
-            {productsData?.results.map((product, index: any) => {
+            {products?.map((product, index: any) => {
               return (
                 <Product
                   key={index}

@@ -9,7 +9,10 @@
   padding: 10px 111px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
-
+  //if width is less than 1500px, resize padding
+    @media (max-width: 1500px) {
+        padding: 10px 70px;
+    }
   &_primary {
     background: $purple-color;
     color: $white-color;

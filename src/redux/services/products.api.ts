@@ -9,8 +9,8 @@ export const productsApi = createApi({
   }),
   endpoints: (builder) => ({
     getProducts: builder.query<IProductsResponse, any>({
-      query: ({ limit = 30, page = 1 }: any) => ({
-        url: "/products",
+      query: ({ userId, limit = 30, page = 1 }: any) => ({
+        url: `api/recommendations/${userId}`,
         params: {
           limit,
           page,

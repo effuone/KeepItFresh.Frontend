@@ -20,7 +20,7 @@ export const ROUTE_LOGIN = "/login";
 export const ROUTE_REGSITER = "/register";
 export const ROUTE_PROFILE = "/profile";
 export const ROUTE_SENTIMENT = "/sentiment";
-export const ROUTE_PRODUCTS = "/allProducts";
+export const ROUTE_PRODUCTS = "/allProducts/:page";
 
 export const publicRoutes: IRouteProps[] = [
   {

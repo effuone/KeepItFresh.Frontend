@@ -1,16 +1,18 @@
 import * as React from "react";
 import useBem from "../../hooks/useBem";
 import SearchBar from "material-ui-search-bar";
-// import { productsJSON} from "../products";
+import jwt_decode from "jwt-decode";
 import "./IndexPage.scss";
 import ContentContainer from "../../shared/layout/ContentContainer";
 import SectionContainer from "../../shared/layout/SectionContainer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Product from "../../shared/Product";
 import { useGetProductsQuery } from "../../redux/services/products.api";
 import NotFoundPage from "../NotFoundPage";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { useSelector } from "../../hooks/useSelector";
+//TODO:
+// Надо сделать профили по query params
 export default function IndexPage() {
   let { page } = useParams();
   const navigate = useNavigate();
@@ -24,12 +26,10 @@ export default function IndexPage() {
     error,
   } = useGetProductsQuery({ page });
 
-  console.log(productsData, "productsData");
-
+  // use useSelector to get the currentData from the store
   const handleChange = (text: string) => {
     setSearch(text);
   };
-  useEffect(() => {}, []);
   const handleSort = () => {
     sort === "Сортировка по рейтингу"
       ? setSort("Сортировка по цене")

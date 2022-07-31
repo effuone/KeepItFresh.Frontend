@@ -187,7 +187,7 @@ export default function RegisterPage() {
                   value={skinTypeId}
                   onChange={(e: any) => setSkinTypeId(e.target.value)}
                 >
-                  <MenuItem value={1}>Жирная кожа</MenuItem>
+                  <MenuItem value={2}>Жирная кожа</MenuItem>
                 </Select>
                 <InputLabel id="demo-simple-select-label1">Локация</InputLabel>
                 <Select

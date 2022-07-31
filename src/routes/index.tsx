@@ -3,6 +3,7 @@ import IndexPage from "./IndexPage";
 import LoginPage from "./LoginPage";
 import NotFoundPage from "./NotFoundPage";
 import RegisterPage from "./RegisterPage";
+import ProfilePage from "./ProfilePage";
 
 export interface IRouteProps {
   path: string;
@@ -15,11 +16,16 @@ export const ROUTE_NOT_FOUND = "*";
 export const ROUTE_SUBSCRIPTION = "/subscription";
 export const ROUTE_LOGIN = "/login";
 export const ROUTE_REGSITER = "/register";
+export const ROUTE_PROFILE = "/profile";
 
 export const publicRoutes: IRouteProps[] = [
   {
     path: ROUTE_NOT_FOUND,
     element: <NotFoundPage />,
+  },
+  {
+    path: "",
+    element: <IndexPage />,
   },
   {
     path: ROUTE_ROOT,
@@ -36,5 +42,9 @@ export const publicRoutes: IRouteProps[] = [
   {
     path: ROUTE_REGSITER,
     element: <RegisterPage />,
-  }
+  },
+  {
+    path: ROUTE_PROFILE,
+    element: <ProfilePage />,
+  },
 ];

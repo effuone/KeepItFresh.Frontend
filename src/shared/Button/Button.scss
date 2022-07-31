@@ -3,18 +3,18 @@
 .Button {
   $root: &;
 
-  font-size: 24px;
+  font-size: 20px;
   color: $white-color;
-  font-weight: 600;
-  padding: 8px 32px;
+  font-weight: 500;
+  padding: 10px 111px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 
   &_primary {
-    background: $primary-color;
+    background: $purple-color;
     color: $white-color;
     &:hover, &:focus {
-      background: #DE5342;
+      background: #5F36A6;
       color: $white-color;
     }
 

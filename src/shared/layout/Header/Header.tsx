@@ -5,7 +5,9 @@ import {
   ROUTE_ROOT,
   ROUTE_NOT_FOUND,
   ROUTE_SUBSCRIPTION,
-  ROUTE_LOGIN, ROUTE_REGSITER
+  ROUTE_LOGIN,
+  ROUTE_REGSITER,
+  ROUTE_PROFILE,
 } from "../../../routes";
 import { useSelector } from "../../../hooks/useSelector";
 import ContentContainer from "../ContentContainer";
@@ -20,30 +22,31 @@ export default function Header() {
   return (
     <header className={bemBlock()}>
       <ContentContainer className={bemElement("content-container")}>
-
         {isAuthorizedUser ? (
-          <NavLink to={ROUTE_NOT_FOUND}>Profile</NavLink>
+          <NavLink to={ROUTE_PROFILE}>Profile</NavLink>
         ) : (
           <div className={bemElement("auth-routes-container")}>
-            <Link to={ROUTE_LOGIN}>
-              Войти
-            </Link>
-            <Link to={ROUTE_REGSITER}>
-              Регистрация
-            </Link>
+            <Link to={ROUTE_LOGIN}>Войти</Link>
+            <Link to={ROUTE_REGSITER}>Регистрация</Link>
           </div>
         )}
         <div className={bemElement("logo-container")}>
-          <Link to={generatePath(ROUTE_ROOT, {page: '1'})}>
+          <Link to={generatePath(ROUTE_ROOT, { page: "1" })}>
             <img src="/logos/keepitfresh.png" alt="one-family-logo" />
           </Link>
         </div>
         <div className={bemElement("routes-container")}>
-          <NavLink className={bemElement("link")} to={ROUTE_ROOT}>
-            <img src="/images/kosmetikaRoute.svg" alt="one-family-logo" />
+          <NavLink className={bemElement("link")} to={"products/1"}>
+            <div className={bemElement("section-button")}>
+              <img src="/logos/search grey.svg" alt="house_grey.svg" />
+              Каталог
+            </div>
           </NavLink>
           <NavLink className={bemElement("link")} to={ROUTE_SUBSCRIPTION}>
-            <img src="/images/Katalog.svg" alt="one-family-logo" />
+            <div className={bemElement("section-button")}>
+              <img src="/logos/cosmetics_grey.svg" alt="cosmetics_grey.svg" />
+              Косметичка
+            </div>
           </NavLink>
         </div>
       </ContentContainer>

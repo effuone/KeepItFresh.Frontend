@@ -14,14 +14,14 @@
     height: 150px;
   }
   &__logo-container {
-    margin: 3px 0 0 15px;
+    margin: 3px 0 0 50px;
   }
 
   &__routes-container {
     :first-child {
       margin-right: 10px;
     }
-
+  display: flex;
   }
 
   &__auth-routes-container {
@@ -45,5 +45,25 @@
   }
   a {
     color: $white-color;
+  }
+  &__section-button {
+    font-weight: 500;
+    font-size: 15px;
+    color: $pale-color;
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px;
+    padding: 3px 13px;
+
+    img {
+      margin-left: 10px;
+        width: 60px;
+        height: 60px;
+      //when hover or focus change src to the other one
+    }
   }
 }
